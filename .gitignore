@@ -4,6 +4,7 @@
 # Ass1 output files
 Ass1_PreprocessingInPandas/*.txt
 Ass2_FeatureImportance/*.txt
+Ass3_NumberOfNeighbours/*.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
