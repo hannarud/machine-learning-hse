@@ -1,10 +1,8 @@
 # Task .pdf files
 *.pdf
 
-# Ass1 output files
-Ass1_PreprocessingInPandas/*.txt
-Ass2_FeatureImportance/*.txt
-Ass3_NumberOfNeighbours/*.txt
+# Assignments output files
+*.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
