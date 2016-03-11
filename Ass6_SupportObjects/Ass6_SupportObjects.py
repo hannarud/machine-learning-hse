@@ -27,7 +27,6 @@ resulting_string = " ".join(str_support_indexes)
 
 print(resulting_string)
 
-# Если ответом является нецелое число, то целую и дробную часть необходимо разграничивать точкой, например, 0.421. При необходимости округляйте дробную часть до трех знаков.
 file_answer = open("answer.txt", "w")
 file_answer.write(resulting_string)
 file_answer.close()
