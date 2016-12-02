@@ -31,10 +31,12 @@ print(importances)
 feature_importances_dict = dict(zip(feature_names, importances))
 print(feature_importances_dict)
 
-# Тут по-хорошему нужно вставить код, который будет автоматически определять два самых важных признака, но пока не хочется, я их просто увидела в консоли и переписала
+from collections import Counter
+feature_importances_dict = Counter(feature_importances_dict)
+
 file7 = open("task.txt", "w")
 
-resulting_string = "Sex Fare"
+resulting_string = feature_importances_dict.most_common(1)[0][0]+" "+feature_importances_dict.most_common(2)[1][0]
 file7.write(resulting_string)
 
 file7.close()
