@@ -15,11 +15,6 @@ train_observations = train_data.ix[:,1:].copy()
 test_classes = test_data[0]
 test_observations = test_data.ix[:,1:].copy()
 
-print(train_classes[0:6])
-print(train_observations[0:6])
-print(test_classes[0:6])
-print(test_observations[0:6])
-
 # Обучите персептрон со стандартными параметрами и random_state=241.
 clf = Perceptron(random_state=241)
 clf.fit(train_observations, train_classes)
@@ -27,8 +22,6 @@ test_classes_predicted_no_scaling = clf.predict(test_observations)
 
 # Подсчитайте качество (долю правильно классифицированных объектов, accuracy) полученного классификатора на тестовой выборке.
 accuracy_no_scaling = accuracy_score(test_classes, test_classes_predicted_no_scaling, normalize=True)
-
-print(accuracy_no_scaling)
 
 # Нормализуйте обучающую и тестовую выборку с помощью класса StandardScaler.
 scaler = StandardScaler()
@@ -40,8 +33,6 @@ clf.fit(train_observations_scaled, train_classes)
 test_classes_predicted_scaling = clf.predict(test_observations_scaled)
 
 accuracy_scaling = accuracy_score(test_classes, test_classes_predicted_scaling, normalize=True)
-
-print(accuracy_scaling)
 
 # Найдите разность между качеством на тестовой выборке после нормализации и качеством до нее. Это число и будет ответом на задание.
 diffval = accuracy_scaling - accuracy_no_scaling

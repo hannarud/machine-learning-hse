@@ -13,9 +13,6 @@ boston_dataset = load_boston()
 observations = boston_dataset.data
 targets = boston_dataset.target
 
-print(observations)
-print(targets)
-
 # Приведите признаки в выборке к одному масштабу при помощи функции sklearn.preprocessing.scale.
 observations_scaled = scale(observations)
 
@@ -24,10 +21,9 @@ p_values = np.linspace(1.0, 10.0, num=200)
 kf = KFold(len(observations_scaled), n_folds=5, shuffle=True, random_state=42)
 
 cv_accuracy = [cross_val_score(estimator=KNeighborsRegressor(n_neighbors=5, weights='distance', p=p_i, metric='minkowski'), X=observations_scaled, y=targets, cv=kf).mean() for p_i in p_values]
-print(cv_accuracy)
 
 # Определите, при каком p качество на кросс-валидации оказалось оптимальным (обратите внимание, что cross_val_score возвращает массив показателей качества по блокам; необходимо максимизировать среднее этих показателей). Это значение параметра и будет ответом на задачу.
-best_p = p_values[max(cv_accuracy)]
+best_p = p_values[int(max(cv_accuracy))]
 
 file_answer = open("answer.txt", "w")
 file_answer.write(repr(round(best_p, 1)))

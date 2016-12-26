@@ -19,8 +19,6 @@ kf = KFold(len(observations), n_folds=5, shuffle=True, random_state=42)
 # Найдите точность классификации на кросс-валидации для метода k ближайших соседей (sklearn.neighbors.KNeighborsClassifier), при k от 1 до 50. При каком k получилось оптимальное качество? Чему оно равно (число в интервале от 0 до 1)? Данные результаты и будут ответами на вопросы 1 и 2.
 cv_accuracy = [cross_val_score(estimator=KNeighborsClassifier(n_neighbors=k), X=observations, y=classes, cv=kf).mean() for k in range(1,51)]
 
-print(cv_accuracy)
-
 answer2 = max(cv_accuracy)
 answer1 = cv_accuracy.index(answer2)+1
 
@@ -36,8 +34,6 @@ file2.close()
 observations_scaled = scale(observations)
 
 scaled_cv_accuracy = [cross_val_score(estimator=KNeighborsClassifier(n_neighbors=k), X=observations_scaled, y=classes, cv=kf).mean() for k in range(1,51)]
-
-print(scaled_cv_accuracy)
 
 answer4 = max(scaled_cv_accuracy)
 answer3 = scaled_cv_accuracy.index(answer4)+1
