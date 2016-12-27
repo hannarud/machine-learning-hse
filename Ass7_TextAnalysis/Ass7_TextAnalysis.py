@@ -14,8 +14,6 @@ from sklearn.grid_search import GridSearchCV
 # Загрузите объекты из новостного датасета 20 newsgroups, относящиеся к категориям "космос" и "атеизм". Обратите внимание, что загрузка данных может занять несколько минут
 newsgroups = datasets.fetch_20newsgroups(subset='all', categories=['alt.atheism', 'sci.space'])
 # После выполнения этого кода массив с текстами будет находиться в поле newsgroups.data, номер класса — в поле newsgroups.target.
-print(newsgroups.data[0:6])
-print(newsgroups.target[0:6])
 
 # Вычислите TF-IDF-признаки для всех текстов. Обратите внимание, что в этом задании мы предлагаем вам вычислить TF-IDF по всем данным. При таком подходе получается, что признаки на обучающем множестве используют информацию из тестовой выборки — но такая ситуация вполне законна, поскольку мы не используем значения целевой переменной из теста. На практике нередко встречаются ситуации, когда признаки объектов тестовой выборки известны на момент обучения, и поэтому можно ими пользоваться при обучении алгоритма.
 # Преобразование обучающей выборки нужно делать с помощью функции fit_transform, тестовой — с помощью transform.
@@ -40,13 +38,11 @@ clf.fit(newsgroups_train, newsgroups.target)
 # Найдите 10 слов с наибольшим абсолютным значением веса (веса каждого признака у обученного классификатора svm.SVC хранятся в поле coef_). Они являются ответом на это задание. Укажите эти слова через запятую или пробел, в нижнем регистре, в лексикографическом порядке.
 # Чтобы понять, какому слову соответствует i-й признак, можно воспользоваться методом get_feature_names() у TfidfVectorizer:
 most_important_words_indexes = np.argsort(abs(clf.coef_.toarray()[0]))[-10:]
-print(most_important_words_indexes)
 
 most_important_words = np.array(vectorizer.get_feature_names())[most_important_words_indexes]
 
 most_important_words_sorted = sorted(most_important_words)
 resulting_string = " ".join(most_important_words_sorted)
-print(resulting_string)
 
 file_answer = open("answer.txt", "w")
 file_answer.write(resulting_string)
